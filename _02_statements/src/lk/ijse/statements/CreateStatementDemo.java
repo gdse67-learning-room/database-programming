@@ -61,14 +61,16 @@ public class CreateStatementDemo {
 
         ResultSet resultSet = statement.executeQuery(sql);
 
-        if(resultSet.next()) {
-            String useName = resultSet.getString(1);
+        while(resultSet.next()) {
+            String userName = resultSet.getString(1);
             String name = resultSet.getString(2);
             String password = resultSet.getString(3);
             String tel = resultSet.getString(4);
 
-            System.out.println(useName + " - " + name + " - " + password + " - " + tel);
+            System.out.println(userName + " - " + name + " - " + password + " - " + tel);
         }
+
+        connection.close();
     }
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -76,6 +78,6 @@ public class CreateStatementDemo {
 
 //        loadAllUsers();
 
-        getUserById("'U002'");
+        getUserById("'U2312' OR 1=1");
     }
 }
