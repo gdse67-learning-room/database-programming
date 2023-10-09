@@ -26,7 +26,53 @@ public class AppInitializer {
 
     }
 
+    private static void loadAllCustomer() {
+        try {
+            Connection connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/kade", "root", "Danu25412541@");
+
+            String sql = "SELECT * FROM customer";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            while(resultSet.next()) {
+                String id = resultSet.getString(1);
+                String name = resultSet.getString(2);
+                String address = resultSet.getString(3);
+                String tel = resultSet.getString(4);
+
+                System.out.println(id + " - " + name + " - " + address + " - " + tel);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void deleteCustomer(String id) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/kade", "root", "Danu25412541@");
+
+            String sql = "DELETE FROM customer WHERE customer_id = ?";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+
+            pstm.setString(1, id);
+
+            int affectedRows = pstm.executeUpdate();
+
+            System.out.println(affectedRows > 0 ? "customer deleted!" : "oops! something happened!");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
-        saveCustomer("C002", "Nimal", "Panadura", "0776735871");
+//        saveCustomer("C002", "Kasun", "Galle", "0745896254");
+
+        loadAllCustomer();
+
+//        deleteCustomer("C001");
     }
 }
