@@ -84,6 +84,32 @@ public class AppInitializer {
 
             System.out.println(affectedRows > 0 ? "customer updated!" : "oops! something happened!");
 
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void searchById(String id) {
+        try {
+            Connection connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/kade", "root", "Danu25412541@");
+
+            String sql = "SELECT * FROM customer WHERE customer_id = ?";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, id);
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            if(resultSet.next()) {
+                String customerId = resultSet.getString(1);
+                String customer_name = resultSet.getString(2);
+                String customer_address = resultSet.getString(3);
+                String customer_tel = resultSet.getString(4);
+
+                System.out.println(customerId + " - " + customer_name + " - " + customer_address + " - " + customer_tel);
+            }
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -97,5 +123,7 @@ public class AppInitializer {
 //        deleteCustomer("C001");
 
         updateCustomer("C001", "Jaffna", "0785642115");
+
+        searchById("C001");
     }
 }
