@@ -30,6 +30,6 @@ public class PreparedStatementDemo {
     }
 
     public static void main(String[] args) throws SQLException {
-        getUserById("U001 OR 1=1");
+        getUserById("U001");
     }
 }

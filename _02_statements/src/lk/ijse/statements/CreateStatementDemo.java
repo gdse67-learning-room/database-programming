@@ -78,6 +78,6 @@ public class CreateStatementDemo {
 
 //        loadAllUsers();
 
-        getUserById("'U2312' OR 1=1");
+        getUserById("'U001'");
     }
 }
