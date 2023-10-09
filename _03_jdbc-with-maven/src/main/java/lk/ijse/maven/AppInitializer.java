@@ -23,7 +23,7 @@ public class AppInitializer {
         int affectedRows = pstm.executeUpdate();
 
         System.out.println(affectedRows > 0 ? "customer saved!" : "oops! something went wrong!");
-
+        connection.close();
     }
 
     private static void loadAllCustomer() {
@@ -36,7 +36,7 @@ public class AppInitializer {
 
             ResultSet resultSet = pstm.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 String id = resultSet.getString(1);
                 String name = resultSet.getString(2);
                 String address = resultSet.getString(3);
@@ -44,7 +44,7 @@ public class AppInitializer {
 
                 System.out.println(id + " - " + name + " - " + address + " - " + tel);
             }
-
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -62,7 +62,7 @@ public class AppInitializer {
             int affectedRows = pstm.executeUpdate();
 
             System.out.println(affectedRows > 0 ? "customer deleted!" : "oops! something happened!");
-
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
