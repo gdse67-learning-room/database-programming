@@ -68,11 +68,34 @@ public class AppInitializer {
         }
     }
 
+    private static void updateCustomer(String id, String new_address, String new_tel) {
+        try {
+            Connection connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/kade", "root", "Danu25412541@");
+
+            String sql = "UPDATE customer SET address = ?, tel = ? WHERE customer_id = ?";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+
+            pstm.setString(1, new_address);
+            pstm.setString(2, new_tel);
+            pstm.setString(3, id);
+
+            int affectedRows = pstm.executeUpdate();
+
+            System.out.println(affectedRows > 0 ? "customer updated!" : "oops! something happened!");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
 //        saveCustomer("C002", "Kasun", "Galle", "0745896254");
 
         loadAllCustomer();
 
 //        deleteCustomer("C001");
+
+        updateCustomer("C001", "Jaffna", "0785642115");
     }
 }
