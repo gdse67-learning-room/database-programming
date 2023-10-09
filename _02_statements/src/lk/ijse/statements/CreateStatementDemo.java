@@ -48,11 +48,34 @@ public class CreateStatementDemo {
             System.out.println(userName + " - " + name + " - " + password + " - " + tel);
         }
 
+        connection.close();
+    }
+
+    private static void getUserById(String user_name) throws SQLException {
+        Connection connection = DriverManager
+                .getConnection("jdbc:mysql://localhost:3306/kade", "root", "Danu25412541@");
+
+        Statement statement = connection.createStatement();
+
+        String sql = "SELECT * FROM user WHERE user_name = " + user_name;
+
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        if(resultSet.next()) {
+            String useName = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String password = resultSet.getString(3);
+            String tel = resultSet.getString(4);
+
+            System.out.println(useName + " - " + name + " - " + password + " - " + tel);
+        }
     }
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 //        saveUser();
 
-        loadAllUsers();
+//        loadAllUsers();
+
+        getUserById("'U002'");
     }
 }
