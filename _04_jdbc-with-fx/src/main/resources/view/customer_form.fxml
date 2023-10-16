@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.fx.controller.CustomerFormController">
     <children>
         <Label layoutX="196.0" layoutY="29.0" text="Customer Manage" textFill="#2c3e50">
@@ -17,9 +16,9 @@
                 <Font name="System Bold" size="19.0" />
             </font>
         </Label>
-        <TextField layoutX="25.0" layoutY="101.0" prefHeight="33.0" prefWidth="230.0" promptText="id" />
-        <TextField layoutX="25.0" layoutY="184.0" prefHeight="33.0" prefWidth="230.0" promptText="address" />
-        <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="464.0" layoutY="243.0" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
+        <TextField fx:id="txtId" layoutX="25.0" layoutY="101.0" prefHeight="33.0" prefWidth="230.0" promptText="id" />
+        <TextField fx:id="txtAddress" layoutX="25.0" layoutY="184.0" prefHeight="33.0" prefWidth="230.0" promptText="address" />
+        <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="464.0" layoutY="243.0" onAction="#btnSaveOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -79,7 +78,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-        <TextField layoutX="328.0" layoutY="101.0" prefHeight="33.0" prefWidth="230.0" promptText="name" />
-        <TextField layoutX="328.0" layoutY="184.0" prefHeight="33.0" prefWidth="230.0" promptText="tel" />
+        <TextField fx:id="txtName" layoutX="328.0" layoutY="101.0" prefHeight="33.0" prefWidth="230.0" promptText="name" />
+        <TextField fx:id="txtTel" layoutX="328.0" layoutY="184.0" prefHeight="33.0" prefWidth="230.0" promptText="tel" />
     </children>
 </AnchorPane>
