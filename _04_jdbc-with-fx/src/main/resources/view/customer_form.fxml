@@ -16,7 +16,7 @@
                 <Font name="System Bold" size="19.0" />
             </font>
         </Label>
-        <TextField fx:id="txtId" layoutX="25.0" layoutY="101.0" prefHeight="33.0" prefWidth="230.0" promptText="id" />
+        <TextField fx:id="txtId" layoutX="25.0" layoutY="101.0" onAction="#txtSearchOnAction" prefHeight="33.0" prefWidth="230.0" promptText="id" />
         <TextField fx:id="txtAddress" layoutX="25.0" layoutY="184.0" prefHeight="33.0" prefWidth="230.0" promptText="address" />
         <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="464.0" layoutY="243.0" onAction="#btnSaveOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #2980b9;" text="Save" textFill="WHITE">
             <font>
